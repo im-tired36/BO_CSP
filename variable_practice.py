@@ -11,4 +11,4 @@ eye_color="brown"
 age="122"
 favorite_subject="science"
 
-print(name, number_10, number_100, breakfast, favoritecolor, school, year, eye_color, age, favorite_subject)
+print(name, number_10, number_100, breakfast, favoritecolor, school, year, eye_color, age,)
