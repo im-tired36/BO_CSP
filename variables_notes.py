@@ -1,4 +1,4 @@
-# VL, Variables Notes
+# BO, Variables Notes
 
 name = input("What is your name?")
 
