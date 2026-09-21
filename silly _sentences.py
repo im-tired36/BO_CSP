@@ -1,0 +1,17 @@
+#BO, 6th, Madlib
+animal = input("what's an example of an animal?")
+adj1 = input("what is an example of a adjective?")
+adj2 = input("what is an example of a adjective?")
+adj3 = input("what is an example of a adjective?")
+noun1 = input("what is an example of a noun?")
+noun2 = input("what is an example of a noun?")
+adj4 = input("what is an example of a adjective?")
+food1 = input("What is an example of a food?")
+place1 = input("What is an example of a place?")
+adj5 = input("what is an example of a adjective?")
+place2 = input("What is an example of a place?")
+noun3 = input("what is an example of a noun?")
+noun4 = input("what is an example of a noun?")
+noun5 = input("what is an example of a noun?")
+
+print("If you've ever met my " + animal + ", Snoopy, then you know he's not your average canine companion. Some kids might find it " + adj1 + " that their beagle has such a/an " + adj2 + " imagination, but not me! All I've ever wanted was a normal, " + adj3 + " dog. Why can't I have a/an " + noun1 + " just like everyone else? Instead, I've got a part-time pet, part-time World War 1 pilot, part-time " + noun2 + ", and a full-time pain! " + adj4 + " grief? Sometimes he looks at me like I'm chopped " + food1 + " -good for nothing except bringing his dinner out to (the) " + place1 + ". Still, it sure is nice to have someone with really " + adj5 + " ears around. And after a long day at (the) " + place2 + ", there's nothing better than coming home to a wet " + noun3 + " on the cheek. Aw, who am I kidding? I'm really lucky to have a/an " + noun4 + " like Snoopy. They don't call dogs man's best friend for nothing!")
