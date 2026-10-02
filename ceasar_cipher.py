@@ -2,7 +2,7 @@
 
 #ask user for information
 encrypt_decrypt = input("Would you like to (E)ncrypt or (D)ecrypt a message? ")
-message = input("Enter a message to encrypt: ")
+message = input("Enter a message to encrypt/decrypt: ")
 while message.isnumeric():
     print("Please input words.")
     message = input("Enter a message to encrypt: ")

@@ -1,0 +1,10 @@
+Apple
+Book
+Cat
+Dog
+House
+Milk
+Water
+Sun
+Tree
+Car
