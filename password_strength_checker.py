@@ -46,11 +46,20 @@ if symbol == True:
 
 if count == 5:
     strength = "strong"
-if count <= 4:
+elif count <= 4:
     strength = "meduim"
-if count < 3:
+else:
     strength = "weak"
 
 print(f"You have a {strength} password.")
 print(f"You have done {count}/5.")
-print("If you don't have a 5/5, you should check if you have a uppercase letter, lowercase letter, a number, and a symbol.")
+if length == False:
+    print("You need at least 8 characters."
+if uppercase == False:
+    print("You need to use a uppercase letter.")
+if lowercase == False:
+    print("You need to use a lowercase letter.")
+if number == False:
+    print("You need to use a number.")
+if symbol == False:
+    print("You need to use a symbol."

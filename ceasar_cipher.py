@@ -1,19 +1,47 @@
-#BO, 6th, cipher
+#BO, 6th, caesar cipher
 
 #ask user for information
 encrypt_decrypt = input("Would you like to (E)ncrypt or (D)ecrypt a message? ")
 message = input("Enter a message to encrypt: ")
-if message.isnumeric():
+while message.isnumeric():
     print("Please input words.")
+    message = input("Enter a message to encrypt: ")
 shift = int(input("Enter the amount you want to shift: "))
 
-def encryptdecrypt(message, shift):
-    encrypted_message = ""
-    for char in message:
-        if char.isalpha():
-            start = ord('A') if char.isupper() else ord('a')
-            shifted_char = chr((ord(char) - start + shift) % 26 + start)
-            encrypted_message += shifted_char
-        else:
-            encrypted_message += char
-    return encrypted_message
+def caesar_shift(message, shift):
+    result = ""
+    
+    if encrypt_decrypt == "E":
+        for char in message:
+            if char.isalpha():
+               if char.isupper():
+                   shifted = (ord(char) - ord("A") + shift) % 26
+                   encrypted = chr(shifted + ord("A"))
+                   result += encrypted
+               else:
+                    if char.islower():
+                        shifted = (ord(char) - ord("a") + shift) % 26
+                        encrypted = chr(shifted + ord("a"))
+                        result += encrypted
+            else:
+                 result += char
+    else:
+        if encrypt_decrypt == "D":
+            for char in message:
+                if char.isalpha():
+                    if char.isupper():
+                        shifted = (ord(char) - ord("A") - shift) % 26
+                        decrypted = chr(shifted + ord("A"))
+                        result += decrypted
+                    else:
+                        if char.islower():
+                            shifted = (ord(char) - ord("a") - shift) % 26
+                            decrypted = chr(shifted + ord("a"))
+                            result += decrypted
+                else:
+                    result += char
+    return result
+
+result = caesar_shift(message, shift)
+print(result)
+       

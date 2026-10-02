@@ -2,20 +2,23 @@
 
 import random
 
-secret_number = random.randint(1, 100)
+number = random.randint(1, 100)
 attempts = 6
 guesses_used = 0
-print("I'm thinking of a number between 1 and 100.")
-print("You have 6 tries to guess it!")
+
+print("Choose a number from 1 to 100 to guess the number I chose.")
+print("You have 6 attempts.")
+
 for attempt in range(attempts):
-    guess = int(input(f"\nGuess #{attempt + 1}: "))
+    guess = int(input(f"This is your #{attempt + 1} try: "))
     guesses_used += 1
-    if guess < secret_number:
+   
+    if guess < number:
         print("Too low!")
-    elif guess > secret_number:
+    elif guess > number:
         print("Too high!")
     else:
         print(f"Correct! You guessed it in {guesses_used} tries!")
         break
 else:
-    print(f"\nYou're out of guesses! The number was {secret_number}.")
+    print(f"You're out of guesses! The number was {number}.")
