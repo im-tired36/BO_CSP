@@ -1,32 +1,28 @@
-#BO, 6th, hangman\
+#BO, 6th, hangman
 import random
 
 #create a list of 10 words on a seperate txt file
 words = []
 with open("listofwords_hangman.txt", "r") as list:
-    content = list.read()
-    words = content.split(",")
+    wordlist = list.read()
+    words = wordlist.split(",")
 #use split( ",") on th econtent of the words txt document to create your list of words
 
 #create another file that only holds win/lose counts
 win_lose_counts = []
 with open("winlose_hangman.py", "r") as win_lose:
-    content = win_lose.read()
-    
-
-
-
-
-
-
+    content = win_lose.read()    
 #pull win and lose totals from the other txt file and save then as 2 seperate variables
+
 
 #build hangman game
 #save the correct word as a variable random.choice(name of list)
 #keep track of number of wrong guesses
 #what letters have been guessed
-
-
+correct_word = random.choice(words)
+right_guess = content[0]
+wrong_guess = content[0]
+letters_guessed = 
 
 #function to display the hangman (need number of wrong guesses)
 """_____
@@ -38,7 +34,8 @@ with open("winlose_hangman.py", "r") as win_lose:
 """
    
 #function to show the letters and spaces (the correct word, letters that have been guessed)
-
+def display(hangman, word, letters):
+    
 #loop over the correct word
    #variable for display word the _ _ _ (starts as an empty string) 
    #check if letter has been guessed
