@@ -1,132 +1,166 @@
 #BO, 6th, hangman
 import random
 
-#create a list of 10 words on a seperate txt file
 words = []
-with open("listofwords_hangman.txt", "r") as list:
-    wordlist = list.read()
-    words = wordlist.split(", ")
-#use split( ",") on th econtent of the words txt document to create your list of words
+with open("listofwords_hangman.txt", "r") as file:
+    wordlist = file.read()
+    words = wordlist.split(",")
 
-#create another file that only holds win/lose counts
-win_lose_counts = []
-with open("winlose_hangman.py", "r") as win_lose:
-    content = win_lose.read()    
-#pull win and lose totals from the other txt file and save then as 2 seperate variables
+try:
+    with open("winlose_hangman.txt", "r") as win_lose:
+        content = win_lose.read()
+        counts = content.split(",")
+        wins = int(counts[0])
+        losses = int(counts[1])
 
-
-#build hangman game
-#save the correct word as a variable random.choice(name of list)
-#keep track of number of wrong guesses
-#what letters have been guessed
-guess = input("Guess a letter: ")
-correct_word = random.choice(words)
-wins = content[0]
-losses = content[2]
-letters_guessed = []
-wrong_guesses = 0
+except FileNotFoundError:
+    wins = 0
+    losses = 0
 
 
-if guess in letters_guessed:
-    print("You've already guessed that letter. Pick another letter.")
-else:
-    letters_guessed.append(guess)
-    if guess not in correct_word:
-        wrong_guesses += 1
-
-
-#function to display the hangman (need number of wrong guesses)
 def display_hangman(wrong_guesses):
     if wrong_guesses == 0:
-        print(
-         """  _____
-            |    |
-            |     
-            |
-            |
-            |______"""
-        )
-    if wrong_guesses == 1:
-        print(
-         """ _____
-            |    |
-            |    O
-            |     
-            |
-            |______"""
-        )
-    if wrong_guesses == 2:
-        print(
-         """ _____
-            |    |
-            |    O
-            |    |
-            |     
-            |______"""
-        )
-    if wrong_guesses == 3:
-        print(
-         """ _____
-            |    |
-            |    O
-            |    |
-            |     
-            |______"""
-        )
-    if wrong_guesses == 4:
-        print(
-         """ _____
-            |    |
-            |    O
-            |   /|\\
-            |     
-            |______"""
-        )
-    if wrong_guesses == 5:
-        print(
-         """ _____
-            |    |
-            |    O
-            |   /|\\
-            |   / 
-            |______"""
-        )        
-    if wrong_guesses == 6:
-        print(
-         """ _____
-            |    |
-            |    O
-            |   /|\\
-            |   / \\
-            |______"""
-        )
-    return display_hangman(wrong_guesses)
-   
-#function to show the letters and spaces (the correct word, letters that have been guessed)
-# def display(word, letters):
-    
-#loop over the correct word
-   #variable for display word the _ _ _ (starts as an empty string) 
-   #check if letter has been guessed
-      #then add the letter to the display word
-   #if they haven't guessed the letter
-      #add an underscore to the display word
-#return the finished display word (outside the loop)
+        print("""
+        _____
+        |   |
+        |
+        |
+        |
+        |_____
+        """)
 
-#main game loop (while true)
-#call the function to show hangman
-#print function call to show display word
-#create a variable and ask the user to guess a letter
-#add the letter to our guess letters list
-#check if the letter is not the word
-   #increase incorrect guesses
-#check if the display word is the same as the word
-   #tell the user they won
-   #ask if they wont to play again
-      #reset random word, wrong guess count, 
-#check to see if the user lost (if they have 6 wrong guesses)
-   #tell them they lost
-   #tell them what the word was
-   #increase the lost count
-   #ask if they want to play again
-#reset random word and wrong guess count
+    elif wrong_guesses == 1:
+        print("""
+        _____
+        |   |
+        |   O
+        |
+        |
+        |_____
+        """)
+
+    elif wrong_guesses == 2:
+        print("""
+        _____
+        |   |
+        |   O
+        |   |
+        |
+        |_____
+        """)
+
+    elif wrong_guesses == 3:
+        print("""
+        _____
+        |   |
+        |   O
+        |  /|
+        |
+        |_____
+        """)
+
+    elif wrong_guesses == 4:
+        print("""
+        _____
+        |   |
+        |   O
+        |  /|\\
+        |
+        |_____
+        """)
+
+    elif wrong_guesses == 5:
+        print("""
+        _____
+        |   |
+        |   O
+        |  /|\\
+        |  /
+        |_____
+        """)
+
+    elif wrong_guesses == 6:
+        print("""
+        _____
+        |   |
+        |   O
+        |  /|\\
+        |  / \\
+        |_____
+        """)
+
+
+def display(word, letters):
+    display_word = ""
+
+    for letter in word:
+        if letter in letters:
+            display_word += letter
+        else:
+            display_word += "_"
+
+    return display_word
+
+while True:
+    correct_word = random.choice(words).strip().lower()
+    wrong_guesses = 0
+    letters_guessed = []
+
+    print("Loading words from listofwords_hangman.txt")
+    print(f"Loading stats from winlose_hangman.txt (wins:{wins}, losses:{losses})")
+
+    while True:
+
+        display_hangman(wrong_guesses)
+            
+        print("this is the word:", display(correct_word, letters_guessed))
+        if len(letters_guessed) == 0:
+            print("You haven't guessed any letters yet.wrong_guesses")
+        else:
+            print(f"You've guessed these letters: {letters_guessed}")
+        
+        print(f"You've made {wrong_guesses} wrong guesses out of 6")
+
+        guess = input("Guess a letter: ").lower()
+
+    
+        if len(guess) != 1 or not guess.isalpha():
+            print("Please enter one letter.")
+            continue
+
+        if guess in letters_guessed:
+            print("You already guessed that letter!")
+            continue
+
+        letters_guessed.append(guess)
+        
+        if guess not in correct_word:
+            wrong_guesses += 1
+            print("That letter isn't in the word.")
+        
+        if display(correct_word, letters_guessed) == correct_word:
+            print(f"Yay! You guessed the word: {correct_word}")
+            wins += 1
+            break
+
+        if wrong_guesses == 6:
+            display_hangman(wrong_guesses)
+            print("\nYou ran out of guesses and lost.")
+            print("The word was:", correct_word)
+            losses += 1
+            break
+
+    with open("winlose_hangman.txt", "w") as win_lose:
+        win_lose.write(str(wins) + "," + str(losses))
+
+    print("\nAll-time stats:")
+    print(f"Number of wins: {wins}")
+    print(f"Number of losses: {losses}")
+
+    play_again = input("\nWould you like to play again? (yes/no): ").lower()
+
+    if play_again != "yes":
+        print("Thanks for playing!")
+        break
+
+        
